@@ -6,7 +6,7 @@ const routes = express.Router();
 routes.get("/getallnotes", async (req, res) => {
   let user = req.user;
   try {
-    let notesalldata = await notesdata.findOne().populate("user");
+    let notesalldata = await notesdata.find({ user }).populate("notes");
     res.json({
       status: "success",
       data: notesalldata,
